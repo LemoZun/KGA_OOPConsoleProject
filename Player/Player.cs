@@ -17,21 +17,9 @@
             if (Position > 0) position--;
         }
 
-        public void MoveRight()
+        public void MoveRight(int _screenWidth)
         {
-            // if (Position < ) position++; // 스크린 클래스도 만들어야겠다
-            position++;
-            
+            if (Position < _screenWidth-1) position++; // 스크린 클래스도 만들어야겠다 
         }
-
-
-
-
-
-
     }
-
-
-
-
 }

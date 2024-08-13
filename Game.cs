@@ -80,7 +80,7 @@ namespace KGA_OOPConsoleProject
                 }
                 else if (key.Key == ConsoleKey.RightArrow)
                 {
-                    player.MoveRight();
+                    player.MoveRight(screen.ScreenWidth);
                 }
 
             }
