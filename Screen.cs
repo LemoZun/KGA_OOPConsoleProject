@@ -32,7 +32,11 @@ namespace KGA_OOPConsoleProject
                 for (int j = screenHeight-1; j > 0; j--) // y를 내림차순으로 갱신하면
                 {
                     // if(map[i,j] != '㉯') //이러면 증식함
-                    map[i,j] = map[i,j-1];
+                    // if(_player.Position != i && j != screenHeight-1) 이것도 아님
+                    
+                        map[i, j] = map[i, j - 1];
+                    
+                    
                 }
                 map[i, 0] = ' '; // null; null 안됨, 똥 생성할거니까 맨 위는 비워줘야함
             }
