@@ -103,8 +103,9 @@ namespace KGA_OOPConsoleProject
 
             screen.UpdateScreen();
 
-            // screen.Map[player.Position, screen.ScreenHeight - 1] = '㉯';
+            //screen.Map[player.Position, screen.ScreenHeight - 1] = '㉯'; // 다시 쓰면 플레이어의 위치는 나오지만 게임오버 안됨
             // 플레이어를 먼저 찍으면 스크린 업데이트 과정에서 플레이어가 사라짐
+            
 
             CheckCollision();
         }
