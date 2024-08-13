@@ -9,20 +9,17 @@ namespace KGA_OOPConsoleProject
 
     public class Game
     {
-        public static int screenWidth = 40;
-        private int screenHeight = 20;
-        private bool isRunning = true;
-        
-        private int poopSpeed;
-        private char[,] screen;
+
+        private bool isRunning = true;        
+        // private int poopSpeed; poop에 구현 해야함
         private Player player;
         private Poop poop;
-
+        private Screen screen;
 
         public Game()
         {
-            screen = new char[screenWidth, screenHeight];
-            player = new Player(screenWidth / 2);
+            screen = new Screen();
+            player = new Player(screen.ScreenWidth/2);
             poop = new Poop();
     }
 
@@ -62,11 +59,11 @@ namespace KGA_OOPConsoleProject
         private void Render()
         {
             Console.SetCursorPosition(0, 0);
-            for (int y = 0; y < screenHeight; y++)
+            for (int y = 0; y < screen.ScreenHeight; y++)
             {
-                for (int x = 0; x < screenWidth; x++)
+                for (int x = 0; x < screen.ScreenWidth; x++)
                 {
-                    Console.Write(screen[x, y]);
+                    Console.Write(screen.Map[x, y]);
                 }
                 Console.WriteLine();
             }
@@ -75,7 +72,7 @@ namespace KGA_OOPConsoleProject
         {
             if (Console.KeyAvailable) // 키 입력이 있는 지 없는지
             {
-                ConsoleKeyInfo key = Console.ReadKey(true); // ? 
+                ConsoleKeyInfo key = Console.ReadKey(true); // 이러면 입력이 없어도 콘솔창이 계속 진행된다고 하는데 원리를 아직 잘 이해 못함
 
                 if (key.Key == ConsoleKey.LeftArrow)
                 {
@@ -87,46 +84,13 @@ namespace KGA_OOPConsoleProject
                 }
 
             }
-
-
-            //switch(key)
-            //{
-            //case :
-            //    ConsoleKey.UpArrow:
-            //        moveY++;
-            //case :
-            //    ConsoleKey.DownArrow
-            //        moveY--;
-            //case :
-            //    ConsoleKey.LeftArrow
-            //        moveX--;
-            //case :
-            //    ConsoleKey.RightArrow
-            //        moveX++;
-            //default:
-
-            //}
         }
 
         private void Update()
         {
-            
-            for (int x = 0; x < screenWidth; x++)
-            {
-                //for //(int y = 0; y < screenHeight; y++) 이거아님 y좌표는 아래로 갈수록 깊어지는 구조
-                for (int y = screenHeight - 1; y >0; // y를 내림차순으로 갱신하면 
-                    y--)
-                {
-                    screen[x,y] = screen[x,y - 1];
-                }
-                screen[x, 0] = ' ';// null; null 안됨, 똥 생성할거니까 맨 위는 비워줘야함
-            }
-            poop.CreatePoop(screen, screenWidth);
-            screen[player.Position, screenHeight - 1] = '㉯'; 
-           
-
-
-
+            screen.UpdateScreen();
+            poop.CreatePoop(screen.Map, screen.ScreenWidth);
+            screen.Map[player.Position, screen.ScreenHeight - 1] = '㉯'; 
         }
     }
 }

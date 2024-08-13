@@ -19,6 +19,7 @@
 
         public void MoveRight()
         {
+            // if (Position < ) position++; // 스크린 클래스도 만들어야겠다
             position++;
             
         }
