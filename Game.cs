@@ -16,12 +16,15 @@ namespace KGA_OOPConsoleProject
         private int poopSpeed;
         private char[,] screen;
         private Player player;
+        private Poop poop;
+
 
         public Game()
         {
             screen = new char[screenWidth, screenHeight];
             player = new Player(screenWidth / 2);
-        }
+            poop = new Poop();
+    }
 
         public void Run()
         {
@@ -107,7 +110,7 @@ namespace KGA_OOPConsoleProject
 
         private void Update()
         {
-
+            
             for (int x = 0; x < screenWidth; x++)
             {
                 //for //(int y = 0; y < screenHeight; y++) 이거아님 y좌표는 아래로 갈수록 깊어지는 구조
@@ -118,7 +121,9 @@ namespace KGA_OOPConsoleProject
                 }
                 screen[x, 0] = ' ';// null; null 안됨, 똥 생성할거니까 맨 위는 비워줘야함
             }
-
+            poop.CreatePoop(screen, screenWidth);
+            screen[player.Position, screenHeight - 1] = '㉯';
+           
 
 
 

@@ -4,9 +4,9 @@
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("♨");
-            //Game game = new Game();
-            //game.Run();
+            //Console.WriteLine("♨");
+            Game game = new Game();
+            game.Run();
         }
     }
 }

@@ -8,7 +8,7 @@ namespace KGA_OOPConsoleProject
 {
     public class Poop
     {
-        static public void CreatePoop(char[,] _screen, int _screenWidth)
+        public void CreatePoop(char[,] _screen, int _screenWidth)
         {
             int poopDensityControl;
             Random rand = new Random();
