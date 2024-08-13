@@ -122,7 +122,7 @@ namespace KGA_OOPConsoleProject
                 screen[x, 0] = ' ';// null; null 안됨, 똥 생성할거니까 맨 위는 비워줘야함
             }
             poop.CreatePoop(screen, screenWidth);
-            screen[player.Position, screenHeight - 1] = '㉯';
+            screen[player.Position, screenHeight - 1] = '㉯'; 
            
 
 
@@ -130,3 +130,8 @@ namespace KGA_OOPConsoleProject
         }
     }
 }
+
+// 범위 넘어가면 터짐 범위 넘어가지 않게 추가 
+// 게임 오버 추가
+// 점수? 추가 
+// 똥 속도와 개체 수 조절 해야함
