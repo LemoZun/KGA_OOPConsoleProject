@@ -70,7 +70,7 @@ namespace KGA_OOPConsoleProject
         }
         private void Input()
         {
-            if (Console.KeyAvailable) // 키 입력이 있는 지 없는지
+            if (Console.KeyAvailable) // 키 입력이 있는 지 없는지 // 키 입력이 가능하면 true 불가능하면 false?
             {
                 ConsoleKeyInfo key = Console.ReadKey(true); // 이러면 입력이 없어도 콘솔창이 계속 진행된다고 하는데 원리를 아직 잘 이해 못함
 
@@ -82,7 +82,6 @@ namespace KGA_OOPConsoleProject
                 {
                     player.MoveRight(screen.ScreenWidth);
                 }
-
             }
         }
 
@@ -95,7 +94,7 @@ namespace KGA_OOPConsoleProject
     }
 }
 
-// 범위 넘어가면 터짐 범위 넘어가지 않게 추가 
+// 범위 넘어가면 터짐 범위 넘어가지 않게 추가  o
 // 게임 오버 추가
 // 점수? 추가 
 // 똥 속도와 개체 수 조절 해야함
