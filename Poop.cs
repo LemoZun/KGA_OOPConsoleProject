@@ -15,7 +15,7 @@ namespace KGA_OOPConsoleProject
             poopDensityControl= rand.Next(0, 100);
             if (poopDensityControl > 30)
             {
-                _screen[rand.Next(0, _screenWidth), 0] = '♨'; // 똥생성
+                _screen[rand.Next(0, _screenWidth), 0] = '㉧'; // 똥생성
             }
 
         }
