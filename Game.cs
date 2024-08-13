@@ -69,41 +69,22 @@ namespace KGA_OOPConsoleProject
 
         private void Render()
         {
-            Console.SetCursorPosition(0, 0);
-            for (int y = 0; y < screen.ScreenHeight; y++)
-            {
-                for (int x = 0; x < screen.ScreenWidth; x++)
-                {
-                    Console.Write(screen.Map[x, y]);
-                }
-                Console.WriteLine();
-            }
+            screen.PrintScreen();
         }
         private void Input()
         {
-            if (Console.KeyAvailable) // 키 입력이 있는 지 없는지 // 키 입력이 가능하면 true 불가능하면 false?
-            {
-                ConsoleKeyInfo key = Console.ReadKey(true); // 이러면 입력이 없어도 콘솔창이 계속 진행된다고 하는데 원리를 아직 잘 이해 못함
-
-                if (key.Key == ConsoleKey.LeftArrow)
-                {
-                    player.MoveLeft();
-                }
-                else if (key.Key == ConsoleKey.RightArrow)
-                {
-                    player.MoveRight(screen.ScreenWidth);
-                }
-            }
+            player.PlayerInput(screen.ScreenWidth);
         }
         private void Update()
         {
             screen.Map[player.Position, screen.ScreenHeight - 1] = '㉯';
+            //print player, print poop 으로 해보기
 
             poop.CreatePoop(screen.Map, screen.ScreenWidth);
 
             screen.UpdateScreen();
 
-            //screen.Map[player.Position, screen.ScreenHeight - 1] = '㉯'; // 다시 쓰면 플레이어의 위치는 나오지만 게임오버 안됨
+            screen.Map[player.Position, screen.ScreenHeight - 1] = '㉯'; // 다시 쓰면 플레이어의 위치는 나오지만 게임오버 안됨
             // 플레이어를 먼저 찍으면 스크린 업데이트 과정에서 플레이어가 사라짐
             
 

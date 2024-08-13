@@ -16,9 +16,6 @@ namespace KGA_OOPConsoleProject
         private char[,] map;
         public char[,] Map { get { return map; } set { map = value; } }
 
-        private int temp;
-        public int Temp { get { return temp; } set { temp = value; } }
-
         public Screen()
         {
             map = new char[screenWidth, screenHeight];
@@ -41,5 +38,18 @@ namespace KGA_OOPConsoleProject
                 map[i, 0] = ' '; // null; null 안됨, 똥 생성할거니까 맨 위는 비워줘야함
             }
         }
+        public void PrintScreen()
+        {
+            Console.SetCursorPosition(0, 0);
+            for (int y = 0; y < screenHeight; y++)
+            {
+                for (int x = 0; x < screenWidth; x++)
+                {
+                    Console.Write(map[x, y]);
+                }
+                Console.WriteLine();
+            }
+        }
+
     }
 }
