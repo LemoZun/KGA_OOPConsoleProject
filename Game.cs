@@ -81,20 +81,24 @@ namespace KGA_OOPConsoleProject
             //screen.PrintPlayer(player);
 
             poop.CreatePoop(screen.Map, screen.ScreenWidth);   
-            screen.UpdateScreen();            
-            CheckCollision();
-        }
-        public void CheckCollision()
-        {
-            for (int i = 0; i < screen.ScreenWidth; i++)
+            screen.UpdateScreen();
+            if (Collision.CheckCollision(player, screen))
             {
-                if (screen.Map[i, screen.ScreenHeight - 1] == '㉧' && i == player.Position)
-                {   //♨ 
-                    Over();
-                    break;
-                }
+                Over();
             }
+                
         }
+        //public void CheckCollision()
+        //{
+        //    for (int i = 0; i < screen.ScreenWidth; i++)
+        //    {
+        //        if (screen.Map[i, screen.ScreenHeight - 1] == '㉧' && i == player.Position)
+        //        {   //♨ 
+        //            Over();
+        //            break;
+        //        }
+        //    }
+        //}
     }
 }
 
