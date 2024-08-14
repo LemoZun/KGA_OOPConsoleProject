@@ -70,6 +70,8 @@ namespace KGA_OOPConsoleProject
 
         private void Render()
         {
+            screen.ClearScreen();
+            screen.PrintPlayer(player);
             screen.PrintScreen(player);
         }
         private void Input()
