@@ -29,7 +29,8 @@
             }
         }
 
-        public void UpdateScreen()
+        public void UpdateScreen() // 화면의 오브젝트들을 맨 아래줄(인덱스상으론 제일 높은 j)을 제외한
+                                    // 나머지 줄을 한칸씩 내려주고 맨 위줄(인덱스상으론 제일 낮은)은 운석을 생성해야하므로 비워줌
         {
             for (int i = 0; i < screenWidth; i++)
             {

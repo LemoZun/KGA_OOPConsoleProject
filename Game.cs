@@ -15,11 +15,15 @@ namespace KGA_OOPConsoleProject
         private Player player;
         private Poop poop;
         private Screen screen;
+        //private Score score;
+        
 
         public Game()
         {
             screen = new Screen();
-            player = new Player(screen.ScreenWidth/2);
+            // player = new Player(screen.ScreenWidth/2); // 화면 중앙에서 시작하게 하고싶은데 
+            // 처음에 position 0 위치에서 시작해서 갑자기 가운데로 옴.. 왜?
+            player = new Player(0);
             poop = new Poop();
         }
 
@@ -30,12 +34,16 @@ namespace KGA_OOPConsoleProject
 
             Start();
             Console.Clear();
+            //Render();
+
             while (isRunning)
             {
-                Render();                
+
+                Render();
                 Input();                
                 Update();
-                System.Threading.Thread.Sleep(50);                
+                
+                System.Threading.Thread.Sleep(100);                
             }
             End();
         }
@@ -47,7 +55,7 @@ namespace KGA_OOPConsoleProject
 
 
         private void Start()
-        {
+        {            
             Console.WriteLine("");
             Console.Clear();
             Console.WriteLine("====================================");
@@ -56,7 +64,8 @@ namespace KGA_OOPConsoleProject
             Console.WriteLine("=                                  =");
             Console.WriteLine("====================================");
             Console.WriteLine();
-            Console.WriteLine("    계속하려면 아무키나 누르세요    ");
+            Console.WriteLine("왼쪽 오른쪽 방향키를 사용해 피하세요.    ");
+            Console.WriteLine("   계속하려면 아무키나 누르세요    ");
             Console.ReadKey();
             Console.Clear();
         }
@@ -70,9 +79,11 @@ namespace KGA_OOPConsoleProject
 
         private void Render()
         {
-            screen.ClearScreen();
-            screen.PrintPlayer(player);
+            //screen.ClearScreen();
+            screen.UpdateScreen();             
             screen.PrintScreen(player);
+            screen.PrintPlayer(player);
+            poop.CreatePoop(screen.Map, screen.ScreenWidth);
         }
         private void Input()
         {
@@ -82,32 +93,22 @@ namespace KGA_OOPConsoleProject
         {
             //screen.PrintPlayer(player);
 
-            poop.CreatePoop(screen.Map, screen.ScreenWidth);   
+            //poop.CreatePoop(screen.Map, screen.ScreenWidth);   
             screen.UpdateScreen();
+            //score.FlowTimePoint();
             if (Collision.CheckCollision(player, screen))
             {
                 Over();
             }
                 
         }
-        //public void CheckCollision()
-        //{
-        //    for (int i = 0; i < screen.ScreenWidth; i++)
-        //    {
-        //        if (screen.Map[i, screen.ScreenHeight - 1] == '㉧' && i == player.Position)
-        //        {   //♨ 
-        //            Over();
-        //            break;
-        //        }
-        //    }
-        //}
     }
 }
 
 // 범위 넘어가면 터짐 범위 넘어가지 않게 추가  o
 // 왜 시작하면 플레이어가 맨 왼쪽에 있다가 잠깐 뒤에 중간으로 오지?
 // 똥이 피해가는 현상 발생? 정확히는 아래로 내려오다가 어느시점에서 오른쪽으로 감
-// 플레이어도 계속 와리가리 거림
+// 플레이어도 계속 와리가리 거림 O 
 // 게임 오버 추가 O
 // 게임오버는 나오는데 플레이어가 안보임
 // 점수? 추가 

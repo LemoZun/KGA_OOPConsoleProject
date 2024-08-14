@@ -8,9 +8,9 @@ namespace KGA_OOPConsoleProject
         private int position;
         public int Position { get { return position; } }
 
-        public Player(int position)
+        public Player(int startPosition)
         {
-            this.position = position;
+            this.position = startPosition;
         }
 
         public void PlayerInput(int screenWidth)
