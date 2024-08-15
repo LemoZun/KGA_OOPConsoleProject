@@ -15,7 +15,7 @@ namespace KGA_OOPConsoleProject
         private Player player;
         private Poop poop;
         private Screen screen;
-        //private Score score;
+        private Score score;
         
 
         public Game()
@@ -23,8 +23,9 @@ namespace KGA_OOPConsoleProject
             screen = new Screen();
             // player = new Player(screen.ScreenWidth/2); // 화면 중앙에서 시작하게 하고싶은데 
             // 처음에 position 0 위치에서 시작해서 갑자기 가운데로 옴.. 왜?
-            player = new Player(0);
+            player = new Player(0); // 일단 그냥 0번 인덱스에서 시작하도록 함
             poop = new Poop();
+            score = new Score();
         }
 
         public void Run()
@@ -73,6 +74,7 @@ namespace KGA_OOPConsoleProject
         private void End()
         {
             Console.Clear();
+            Console.WriteLine($"획득한 점수 : {score.Point} 점");
             Console.WriteLine("게임 오버");
             return;
         }
@@ -81,7 +83,7 @@ namespace KGA_OOPConsoleProject
         {
             //screen.ClearScreen();
             screen.UpdateScreen();             
-            screen.PrintScreen(player);
+            score.Point = screen.PrintScreen(player);
             screen.PrintPlayer(player);
             poop.CreatePoop(screen.Map, screen.ScreenWidth);
         }
@@ -96,11 +98,10 @@ namespace KGA_OOPConsoleProject
             //poop.CreatePoop(screen.Map, screen.ScreenWidth);   
             screen.UpdateScreen();
             //score.FlowTimePoint();
-            if (Collision.CheckCollision(player, screen))
+            if (Collision.CheckCollision(player, screen,poop))
             {
                 Over();
             }
-                
         }
     }
 }

@@ -11,7 +11,9 @@
         private char[,] map;
         public char[,] Map { get { return map; } set { map = value; } }
 
-        
+        private Score score = new Score();
+
+
 
         public Screen()
         {
@@ -47,7 +49,7 @@
                 map[i, 0] = ' '; // null; null 안됨, 똥 생성할거니까 맨 위는 비워줘야함
             }
         }
-        public void PrintScreen(Player player) // 스크린 출력
+        public int PrintScreen(Player player) // 스크린 출력
         {
             Console.SetCursorPosition(0, 0); // 없으면 여러개가 계속 출력됨
             PrintPlayer(player);
@@ -60,7 +62,9 @@
                 Console.WriteLine();
             }
 
-            Console.WriteLine("0000000001000000000100000000010000000001");
+            Console.WriteLine("========================================");
+            
+            return score.FlowTimePoint(); // 점수 출력용
         }
 
 

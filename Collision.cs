@@ -15,10 +15,9 @@ namespace KGA_OOPConsoleProject
             for (int i = 0; i < screen.ScreenWidth; i++)
             {
                 if (i == player.Position && screen.Map[i, screen.ScreenHeight - 1] == poop.PoopShape)
-                {   //♨ 
+                {    
                     return true;
                 }
-                
             }
             return false;
         }
