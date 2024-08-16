@@ -89,7 +89,7 @@ namespace KGA_OOPConsoleProject
             //screen.ClearScreen();
             screen.UpdateScreen();             
             score.Point = screen.PrintScreen(player);
-            screen.PrintPlayer(player);
+            // screen.PrintPlayer(player);
             poop.CreatePoop(screen.Map, screen.ScreenWidth);
         }
         private void Input()

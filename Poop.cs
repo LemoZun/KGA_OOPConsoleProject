@@ -15,13 +15,14 @@ namespace KGA_OOPConsoleProject
         private int difficultyLevel;
         public int DifficultyLevel { get { return difficultyLevel; } private set { difficultyLevel = value; } }
 
-        public void SelectDifficulty()
+        public void SelectDifficulty() 
         {
             bool progress = false;
             while(!progress)
             {
                 Console.WriteLine(" 난이도를 1~9 까지 중 정해주세요   ");
-                bool toDetermine = int.TryParse(Console.ReadLine(), out int temp); // 게터 세터 프로퍼티는 out 으로 전달 불가 (왜?)   // ref도 안되네
+                bool toDetermine = int.TryParse(Console.ReadLine(), out int temp); // 게터 세터 프로퍼티는 out 으로 전달 불가 (왜?)   // ref도 안되네 //
+                                                                                   //사실 그냥 difficultyLevel 써도 되긴 함
                 DifficultyLevel = temp; 
                 if(toDetermine == false || DifficultyLevel <= 0 ||  DifficultyLevel > 9)
                 {
@@ -30,8 +31,7 @@ namespace KGA_OOPConsoleProject
                     
                 }
                 else progress = true;
-            }
-            
+            }            
         }
 
         public void CreatePoop(char[,] _screen, int _screenWidth)

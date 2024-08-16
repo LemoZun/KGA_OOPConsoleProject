@@ -14,7 +14,7 @@ namespace KGA_OOPConsoleProject
         private int point=0;
         public int  Point { get { return point; }  set { point = value; } }
         public DateTime birthTime;
-        public const int pointPerSecond = 100;
+        //public const int pointPerSecond = 100;
 
         public Score()
         {
@@ -25,7 +25,7 @@ namespace KGA_OOPConsoleProject
         public int FlowTimePoint()
         {
             TimeSpan currentTime = DateTime.Now - birthTime; //현재 시간과 게임을 처음 시작했을때의 시간의 차
-            Point = (int)(currentTime.TotalSeconds *100)/100*100; // 100점 단위로 점수표시하기위함
+            Point = (int)(currentTime.TotalSeconds *100)/100*Define.pointPerSecond; // 100점 단위로 점수표시하기위함
             Console.WriteLine($"                  {Point}점");
             return Point;
         }

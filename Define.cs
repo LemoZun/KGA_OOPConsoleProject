@@ -10,5 +10,6 @@ namespace KGA_OOPConsoleProject
     {
         public const int ScreenWidth = 40;
         public const int ScreenHeight = 20;
+        public const int pointPerSecond = 100;
     }
 }

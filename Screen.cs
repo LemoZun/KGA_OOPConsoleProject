@@ -22,6 +22,11 @@
 
         public void ClearScreen() // 스크린 초기화용
         {
+            //foreach(var item in map)
+            //{
+            //    item = ' ';
+            //}
+            //Array.Fill(map, ' '); //2차원 배열이라 안됨
             for(int i = 0; i < screenWidth; i++)
             {
                 for(int j = 0; j < screenHeight; j++)
@@ -52,7 +57,7 @@
         public int PrintScreen(Player player) // 스크린 출력
         {
             Console.SetCursorPosition(0, 0); // 없으면 여러개가 계속 출력됨
-            PrintPlayer(player);
+            InputPlayerPosition(player);
             for (int y = 0; y < screenHeight; y++)
             {
                 for (int x = 0; x < screenWidth; x++)
@@ -69,14 +74,14 @@
 
 
         private int beforePosition; //= Define.ScreenWidth/2;
-        public void PrintPlayer(Player player)
+        public void InputPlayerPosition(Player player)
         {
             
             //if(beforePosition != 0)
             //{
             //    map[player.Position, screenHeight - 1] = ' ';
             //}
-            map[beforePosition, screenHeight - 1] = ' ';
+            map[beforePosition, screenHeight - 1] = ' '; // 시작때 왼쪽에서 시작해서 가운데로 순간이동하는 현상을 없애려고 했지만 잘 안됨 일단 이 코드 없어도 돌아감
             map[player.Position, screenHeight - 1] = '㉯';
             beforePosition = player.Position;
         }
