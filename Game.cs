@@ -87,7 +87,7 @@ namespace KGA_OOPConsoleProject
         private void Render()
         {
             //screen.ClearScreen();
-            screen.UpdateScreen();             
+            screen.UpdateScreen();   // 빼면  플레이어가 진동함         
             score.Point = screen.PrintScreen(player);
             // screen.PrintPlayer(player);
             poop.CreatePoop(screen.Map, screen.ScreenWidth);
