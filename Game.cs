@@ -16,6 +16,7 @@ namespace KGA_OOPConsoleProject
         private Poop poop;
         private Screen screen;
         private Score score;
+        private Collision collision;
         
 
         public Game()
@@ -26,6 +27,8 @@ namespace KGA_OOPConsoleProject
             player = new Player(0); // 일단 그냥 0번 인덱스에서 시작하도록 함
             poop = new Poop();
             score = new Score();
+            collision = new Collision();
+            collision.DetectedCollision += Over;
         }
 
         public void Run()
@@ -98,11 +101,14 @@ namespace KGA_OOPConsoleProject
             //poop.CreatePoop(screen.Map, screen.ScreenWidth);   
             screen.UpdateScreen();
             //score.FlowTimePoint();
-            if (Collision.CheckCollision(player, screen,poop))
-            {
-                Over();
-            }
+            //if (collision.CheckCollision(player, screen,poop))
+            //{
+            //    Over();
+            //}
+            collision.CheckCollision(player, screen, poop);
         }
+
+        // private void HappenCollision
     }
 }
 
