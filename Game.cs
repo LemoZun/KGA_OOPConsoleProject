@@ -18,6 +18,7 @@ namespace KGA_OOPConsoleProject
         private Score score;
         private Collision collision;
         
+        
 
         public Game()
         {
@@ -69,8 +70,9 @@ namespace KGA_OOPConsoleProject
             Console.WriteLine("====================================");
             Console.WriteLine();
             Console.WriteLine("왼쪽 오른쪽 방향키를 사용해 피하세요.    ");
-            Console.WriteLine("   계속하려면 아무키나 누르세요    ");
-            Console.ReadKey();
+            // Console.WriteLine("   계속하려면 아무키나 누르세요    ");
+            poop.SelectDifficulty();
+            // Console.ReadKey();
             Console.Clear();
         }
 
@@ -115,8 +117,8 @@ namespace KGA_OOPConsoleProject
 // 범위 넘어가면 터짐 범위 넘어가지 않게 추가  o
 // 왜 시작하면 플레이어가 맨 왼쪽에 있다가 잠깐 뒤에 중간으로 오지?
 // 똥이 피해가는 현상 발생? 정확히는 아래로 내려오다가 어느시점에서 오른쪽으로 감
-// 플레이어도 계속 와리가리 거림 O 
-// 게임 오버 추가 O
-// 게임오버는 나오는데 플레이어가 안보임
-// 점수? 추가 
+// 플레이어도 계속 와리가리 거림 (기존 위치를 clear하지 않아서 발생. 해결함)
+// 게임 오버 추가 (해결)
+// 게임오버는 나오는데 플레이어가 실존하지만 실제론 안보임 (해결)
+// 점수? 추가 (해결)
 // 똥 속도와 개체 수 조절 해야함
