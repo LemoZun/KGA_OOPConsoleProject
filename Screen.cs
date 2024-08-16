@@ -68,7 +68,7 @@
         }
 
 
-        private int beforePosition = Define.ScreenWidth/2;
+        private int beforePosition; //= Define.ScreenWidth/2;
         public void PrintPlayer(Player player)
         {
             
