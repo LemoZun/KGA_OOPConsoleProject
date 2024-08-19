@@ -1,0 +1,31 @@
+@startuml
+!include https://raw.githubusercontent.com/plantuml-stdlib/C4-PlantUML/master/C4_Container.puml
+HIDE_STEREOTYPE()
+
+actor User
+participant "Game" as G
+participant "Player" as P
+participant "Poop" as Po
+participant "Collision" as C
+participant "Screen" as S
+
+User -> G: Run()
+G -> G: Start()
+
+loop 
+    G -> G : Render()
+    G -> S: UpdateScreen()
+    S -> S: PrintScreen()
+    S -> Po: CreatePoop()
+    Po -> G: Input()
+    G -> P: PlayerInput()
+    P -> G: Update()
+    G -> S : UpdateScreen()
+    alt Collision Detected
+        G -> G: Over()
+    end
+    G -> S: Render()
+end
+G -> G: End()
+
+@enduml

@@ -1,0 +1,29 @@
+@startuml
+!include https://raw.githubusercontent.com/plantuml-stdlib/C4-PlantUML/master/C4_Container.puml
+HIDE_STEREOTYPE()
+
+start
+:게임 시작 Run();
+:시작 화면 표시 Start();
+
+repeat
+
+  :화면 렌더링 Render(); 
+  :운석 생성 CreatePoop();
+  :플레이어 입력  Input();
+  :게임 상태 갱신 Update();
+  :충돌 감지 CheckCollision();
+
+  if (충돌이 발생했나?) then (Yes)
+    :게임 종료 Over();
+    stop
+  else (No)
+  
+    :게임 계속 진행;
+  endif
+repeat while (게임이 실행 중)
+
+stop
+
+
+@enduml

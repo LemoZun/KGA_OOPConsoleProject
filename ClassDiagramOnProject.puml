@@ -1,0 +1,78 @@
+@startuml
+!include https://raw.githubusercontent.com/plantuml-stdlib/C4-PlantUML/master/C4_Container.puml
+HIDE_STEREOTYPE()
+
+class Game 
+{
+    - bool isRunning
+    - Player player
+    - Poop poop
+    - Screen screen
+    - int score
+    - Timer scoreTimer
+    - Collision collision
+    --
+    + Run()
+    + Start()    
+    + Render()
+    + Input()
+    + Update()
+    + Over()
+    + End()
+}
+
+class Player 
+{
+    - position : int
+    --
+    + PlayerInput()
+}
+
+class Collision 
+{
+    + DetectedCollision: Action
+    --
+    + CheckCollision()
+}
+
+class Poop 
+{
+    - position : int
+    - poopShape : char
+    --
+    + SelectDifficulty() 
+    + CreatePoop()
+}
+
+class Screen 
+{
+    - char[][] map
+    - screenWidth : int
+    - screenHeight : int
+    --
+    + ClearScreen()
+    + UpdateScreen()
+    + PrintScreen(Player) : int
+    + InputPlayerPosition(Player)
+}
+
+class Score
+{
+    + point : int
+    + birthTime : DateTime
+    --
+    + FlowTimePoint() : int
+}
+
+
+Screen ..> Score
+Screen ..> Player
+Screen ..> Collision
+Player ..> Collision
+Poop ..> Collision
+Game --> Player
+Game --> Poop
+Game --> Screen
+Game --> Collision
+@enduml
+
